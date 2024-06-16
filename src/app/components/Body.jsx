@@ -6,12 +6,25 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Container from '@mui/material/Container';
 import Chip from '@mui/material/Chip';
-import Modal from './Modal';
+import ClientModal from './ClientModal';
+import ClientContactsModal from './ClientContactsModal';
 import HelpModal from './HelpModal';
 import moment from 'moment';
 
-
 export default function Body() {
+  // State variables
+  const [searchName, setSearchName] = useState('');
+  const [rows, setRows] = useState([]);
+  const [filteredRows, setFilteredRows] = useState([]);
+  const [showClientModal, setShowClientModal] = useState(false);
+  const [clientModalMessage, setClientModalMessage] = useState('');
+  const [showClientContactsModal, setShowClientContactsModal] = useState(false);
+  const [clientContactsModalMessage, setClientContactsModalMessage] = useState('');
+  const [modalClientContacts, setClientContactsModal] = useState({});
+  const [modalClient, setClientModal] = useState({});
+  const [showHelpModal, setShowHelpModal] = useState(false);
+
+  // Columns configuration for DataGrid
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
     { field: 'name', headerName: 'Nome', width: 150 },
@@ -19,82 +32,35 @@ export default function Body() {
       field: 'emails',
       headerName: 'Email(s)',
       width: 300,
-      renderCell: (params) => (
-        <Box sx={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center', gap: 0.5, paddingTop: '8px' }}>
-          {params.value.map((email, index) => (
-            <Chip
-              key={index}
-              label={email}
-              onClick={() => handleEmailClick(email)}
-              sx={{ cursor: 'pointer' }}
-            />
-          ))}
-        </Box>
-      ),
+      renderCell: renderEmailsCell,
     },
     {
       field: 'telephones',
       headerName: 'Telefone(s)',
       width: 300,
-      renderCell: (params) => (
-        <Box sx={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center', gap: 0.5, paddingTop: '8px' }}>
-          {params.value.map((telephone, index) => (
-            <Chip
-              key={index}
-              label={telephone}
-              onClick={() => handleTelephoneClick(telephone)}
-              sx={{ cursor: 'pointer' }}
-            />
-          ))}
-        </Box>
-      ),
+      renderCell: renderTelephonesCell,
     },
-    { 
-      field: 'createdAt', 
-      headerName: 'Criado em', 
-      width: 150,
-      renderCell: (params) => {
-        // Format the createdAt field to dd/mm/yyyy
-        const formattedDate = moment(params.value).format('DD/MM/YYYY - HH:mm');
-        return <div>{formattedDate}</div>;
-      }
+    {
+      field: 'createdAt',
+      headerName: 'Criado em',
+      width: 180,
+      renderCell: renderCreatedAtCell,
     },
     {
       field: 'actions',
       headerName: 'Ações',
-      width: 200,
-      renderCell: (params) => (
-        <Box>
-          <Button
-            color="primary"
-            onClick={() => handleUpdateButtonClick(params.row)}
-            sx={{ marginRight: 1 }}
-          >
-            Modificar
-          </Button>
-          <Button
-            color="error"
-            onClick={() => handleDeleteButtonClick(params.row)}
-          >
-            Apagar
-          </Button>
-        </Box>
-      ),
+      width: 300,
+      renderCell: renderActionsCell,
     },
-
   ];
 
-  const [searchName, setSearchName] = useState('');
-  const [rows, setRows] = useState([]);
-  const [filteredRows, setFilteredRows] = useState(rows);
-  const [showModal, setShowModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
-  const [modalClient, setModalClient] = useState({});
-  const [showHelpModal, setShowHelpModal] = useState(false); // State to control HelpModal visibility
-
+  // Fetch clients from API
   const fetchClients = async () => {
     try {
       const response = await fetch('http://localhost:4000/api/clients');
+      if (!response.ok) {
+        throw new Error('Failed to fetch clients');
+      }
       const data = await response.json();
       const dataWithIds = data.map((item) => ({ id: item._id, ...item }));
       setRows(dataWithIds);
@@ -104,24 +70,44 @@ export default function Body() {
     }
   };
 
-  const handleOpenModal = (message, client) => {
-    setModalMessage(message);
-    setModalClient(client);
-    setShowModal(true);
+  // Handlers for modals
+  const handleOpenClientModal = (message, client) => {
+    setClientModalMessage(message);
+    setClientModal(client);
+    setShowClientModal(true);
   };
 
-  const handleCloseModal = () => {
-    setShowModal(false);
+  const handleCloseClientModal = () => {
+    setShowClientModal(false);
     fetchClients(); // Fetch clients again after closing the modal
   };
 
+  const handleOpenClientContactsModal = (message, client) => {
+    setClientContactsModalMessage(message);
+    setClientContactsModal(client);
+    setShowClientContactsModal(true);
+  };
+
+  const handleCloseClientContactsModal = () => {
+    setShowClientContactsModal(false);
+    fetchClients(); // Fetch clients again after closing the modal
+  };
+
+  // Other event handlers
   const handleCreateButtonClick = () => {
-    handleOpenModal('Create Client', {});
+    handleOpenClientModal('Criar Cliente', {});
   };
 
   const handleUpdateButtonClick = (row) => {
     console.log('Update button clicked for row:', row);
-    handleOpenModal('Update Client', row);
+    handleOpenClientModal('Update Client', row);
+  };
+
+  const handleContactsClick = (row) => {
+    console.log('Contacts button clicked for row:', row);
+    setClientContactsModalMessage('Contatos');
+    setClientContactsModal(row);
+    setShowClientContactsModal(true);
   };
 
   const handleDeleteButtonClick = async (row) => {
@@ -156,13 +142,14 @@ export default function Body() {
     setShowHelpModal(!showHelpModal);
   };
 
+  // Effects
   useEffect(() => {
     fetchClients();
   }, []);
 
   useEffect(() => {
     let updatedRows = rows;
-  
+
     if (searchName.startsWith('#')) {
       const telephoneNames = searchName.slice(1).toLowerCase().split(' #').map(telephone => telephone.trim());
       updatedRows = rows.filter((row) =>
@@ -175,11 +162,73 @@ export default function Body() {
         row.name.toLowerCase().includes(searchName.toLowerCase())
       );
     }
-  
+
     setFilteredRows(updatedRows);
   }, [searchName, rows]);
-  
 
+  // Render functions for DataGrid cells
+  function renderEmailsCell(params) {
+    return (
+      <Box sx={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center', gap: 0.5, paddingTop: '8px' }}>
+        {params.value.map((email, index) => (
+          <Chip
+            key={index}
+            label={email}
+            sx={{ cursor: 'pointer' }}
+          />
+        ))}
+      </Box>
+    );
+  }
+
+  function renderTelephonesCell(params) {
+    return (
+      <Box sx={{ display: 'flex', flexDirection: 'row', alignContent: 'center', alignItems: 'center', gap: 0.5, paddingTop: '8px' }}>
+        {params.value.map((telephone, index) => (
+          <Chip
+            key={index}
+            label={telephone}
+            onClick={() => handleTelephoneClick(telephone)}
+            sx={{ cursor: 'pointer' }}
+          />
+        ))}
+      </Box>
+    );
+  }
+
+  function renderCreatedAtCell(params) {
+    const formattedDate = moment(params.value).format('DD/MM/YYYY - HH:mm');
+    return <div>{formattedDate}</div>;
+  }
+
+  function renderActionsCell(params) {
+    return (
+      <Box>
+        <Button
+          color="success"
+          onClick={() => handleContactsClick(params.row)}
+          sx={{ marginRight: 1 }}
+        >
+          Contatos
+        </Button>
+        <Button
+          color="primary"
+          onClick={() => handleUpdateButtonClick(params.row)}
+          sx={{ marginRight: 1 }}
+        >
+          Modificar
+        </Button>
+        <Button
+          color="error"
+          onClick={() => handleDeleteButtonClick(params.row)}
+        >
+          Apagar
+        </Button>
+      </Box>
+    );
+  }
+
+  // JSX rendering
   return (
     <Box sx={{ height: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
@@ -192,8 +241,8 @@ export default function Body() {
             value={searchName}
             onChange={handleSearchBarChange}
           />
-          <Button 
-            variant="outlined" 
+          <Button
+            variant="outlined"
             sx={{ height: '60%' }}
             onClick={handleCreateButtonClick}
           >
@@ -222,11 +271,17 @@ export default function Body() {
           }}
         />
       </Box>
-      <Modal 
-        show={showModal} 
-        onClose={handleCloseModal} 
-        message={modalMessage} 
-        client={modalClient || {}} 
+      <ClientModal
+        show={showClientModal}
+        onClose={handleCloseClientModal}
+        message={clientModalMessage}
+        client={modalClient || {}}
+      />
+      <ClientContactsModal
+        show={showClientContactsModal}
+        onClose={handleCloseClientContactsModal}
+        message={clientContactsModalMessage}
+        client={modalClientContacts || {}}
       />
       <HelpModal show={showHelpModal} onClose={toggleHelpModal} /> {/* HelpModal component */}
     </Box>
