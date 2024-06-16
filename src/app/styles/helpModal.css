@@ -22,4 +22,9 @@
   .modal h2 {
     margin: 0 0 20px 0;
   }
+
+  .modal p.help-modal-text {
+    margin-bottom: 10px; /* Adjust as needed */
+  }
+  
   
