@@ -54,10 +54,13 @@ npm install <br />
 
 <hr>
 
+
+### Uso
+Para entender como usar a aplicação, há um botão de ajuda dentro da própria aplicação que fornece instruções detalhadas. <br /> <br />
+
 Após realizada uma das etapas acima (Github ou .RAR), abra dois terminais no VSCode: <br />
 No primeiro terminal, execute o servidor Express (server): npm run api-dev <br />
 No segundo terminal, execute o servidor React (client): npm run dev <br /> <br />
-
 Acesse a aplicação no http://localhost:3000 <br />
 
 ### Problemas enfrentados
