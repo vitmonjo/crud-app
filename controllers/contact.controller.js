@@ -19,6 +19,22 @@ const getContact = async (req, res) => {
     }
 }
 
+const getClientContacts = async (req, res) => {
+    try {
+        const { clientId } = req.params;
+        const contacts = await Contact.find({ clientId });
+        
+        if (contacts.length === 0) {
+            return res.status(404).json({ message: `No contacts found for this clientId ${clientId}` });
+        }
+        
+        res.status(200).json(contacts);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+
 const createContact = async (req, res) => {
     try {
         const contact = await Contact.create(req.body);
@@ -63,6 +79,7 @@ const deleteContact = async (req, res) => {
 module.exports = {
     getContacts,
     getContact,
+    getClientContacts,
     createContact,
     updateContact,
     deleteContact
