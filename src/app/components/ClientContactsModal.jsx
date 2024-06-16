@@ -165,7 +165,6 @@ const ClientContactsModal = ({ show, onClose, message, client = {} }) => {
                         pageSize={5}
                         paginationModel={{ pageSize: 5, page: 0 }}
                         pageSizeOptions={[5]}
-                        checkboxSelection
                         components={{
                             Pagination: (props) => <Box>{props.children}</Box>,
                         }}

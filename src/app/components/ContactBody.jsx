@@ -60,7 +60,7 @@ export default function Body() {
     // Fetch contacts from API
     const fetchContacts = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/contacts');
+            const response = await fetch(`http://localhost:4000/api/contacts`);
             if (!response.ok) {
                 throw new Error('Failed to fetch contacts');
             }
@@ -81,15 +81,24 @@ export default function Body() {
                 throw new Error('Failed to fetch client name');
             }
             const data = await response.json();
-            setClientNameMap((prevMap) => ({
-                ...prevMap,
-                [clientId]: data.name,
-            }));
+            
+            // Ensure data.name exists before updating clientNameMap
+            if (data.name !== undefined && data.name !== null) {
+                setClientNameMap((prevMap) => ({
+                    ...prevMap,
+                    [clientId]: data.name,
+                }));
+            } else {
+                setClientNameMap((prevMap) => ({
+                    ...prevMap,
+                    [clientId]: 'Desconhecido',
+                }));
+            }
         } catch (error) {
             console.error(`Error fetching client name for clientId ${clientId}:`, error);
             setClientNameMap((prevMap) => ({
                 ...prevMap,
-                [clientId]: 'Unknown',
+                [clientId]: 'Desconhecido',
             }));
         }
     };
@@ -211,7 +220,13 @@ export default function Body() {
     function renderPertenceACell(params) {
         const clientId = params.row.clientId;
         const clientName = clientNameMap[clientId];
-        return <div>{clientName || 'Carregando...'}</div>;
+    
+        // Check if clientName is undefined or null, show 'Desconhecido' or loading state
+        if (clientName === undefined || clientName === null) {
+            return <div>Carregando...</div>; // or any placeholder text or loading indicator
+        }
+    
+        return <div>{clientName || 'Desconhecido'}</div>;
     }
 
     function renderActionsCell(params) {

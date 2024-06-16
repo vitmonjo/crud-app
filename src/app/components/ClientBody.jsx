@@ -57,7 +57,7 @@ export default function Body() {
   // Fetch clients from API
   const fetchClients = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/clients');
+      const response = await fetch(`http://localhost:4000/api/clients`);
       if (!response.ok) {
         throw new Error('Failed to fetch clients');
       }

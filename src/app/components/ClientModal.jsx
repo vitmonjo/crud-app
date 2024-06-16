@@ -56,7 +56,7 @@ const ClientModal = ({ show, onClose, message, client = {} }) => {
     };
 
     try {
-      const url = isCreate ? 'http://localhost:4000/api/clients' : `http://localhost:4000/api/clients/${client.id}`;
+      const url = isCreate ? `http://localhost:4000/api/clients` : `http://localhost:4000/api/clients/${client.id}`;
       const method = isCreate ? 'POST' : 'PUT';
 
       const response = await fetch(url, {

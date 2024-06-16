@@ -53,7 +53,7 @@ const ContactModal = ({ show, onClose, message, contact = {}, clientId, isCreate
 
     try {
       const url = isCreate
-        ? 'http://localhost:4000/api/contacts'
+        ? `http://localhost:4000/api/contacts`
         : `http://localhost:4000/api/contacts/${contact.id}`;
       const method = isCreate ? 'POST' : 'PUT';
 
