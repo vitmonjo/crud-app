@@ -27,7 +27,9 @@ A escolha para o front-end com React veio da grande familiaridade que já possuo
 Fiz estas escolhas de Tech Stack por ter recebido o aval para utilizar as tecnologias de minha preferência, no entanto, já desenvolvi um CRUD similar com Java e Spring Boot, persistindo dados com Hibernate num Banco de Dados PostgreSQL. Acabei optando por fazer em Node.js pela praticiade da linguagem e velocidade que iria me permitir entregar, mas meu objetivo no momento é aprofundar meus conhecimentos em Java/Spring Boot.
 
 ### Instruções de Instalação
+
 <hr>
+
 #### Github
 
 ##### Pré requisitos:
@@ -38,8 +40,9 @@ Abrir um novo terminal e digitar <br />
 git clone git@github.com:vitmonjo/senior-crud.git <br />
 cd senior-crud <br />
 npm install <br />
+
 <hr>
-<hr>
+
 #### .RAR
 
 ##### Pré requisitos:
@@ -48,6 +51,7 @@ npm install <br />
 Extrair o arquivo em alguma pasta <br />
 Abrir um novo terminal dentro desta pasta <br />
 npm install <br />
+
 <hr>
 
 Após realizada uma das etapas acima (Github ou .RAR), abra dois terminais no VSCode: <br />
