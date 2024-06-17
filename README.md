@@ -71,7 +71,7 @@ Acesse a aplicação no http://localhost:3000 <br />
 
 
 ### Como realizar testes 
-Para realizar testes, com o aplicativo instalado, abra um terminar e execute o seguinte comando. <br />
+Para realizar testes, com o aplicativo instalado, abra um terminal e execute o seguinte comando. <br />
 npm test <br>
 
 No momento há 10 testes sendo rodados, cobrindo todos os endpoints da API. <br />
