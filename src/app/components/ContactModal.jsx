@@ -7,6 +7,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { InputMask } from '@react-input/mask';
 
 const ContactModal = ({ show, onClose, message, contact = {}, clientId, isCreate }) => {
   const [contactName, setContactName] = useState(contact.name || '');
@@ -116,13 +117,13 @@ const ContactModal = ({ show, onClose, message, contact = {}, clientId, isCreate
           </List>
         </div>
         <div>
-          <TextField
-            label="Telefone"
+        <InputMask 
+            mask="(__) _____-____" 
+            replacement={{ _: /\d/ }} 
             value={telephoneInput}
+            className="telephone-input"
             onChange={(e) => setTelephoneInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && addTelephone()}
-            fullWidth
-            margin="normal"
           />
           <Button onClick={addTelephone}>Adicionar Telefone</Button>
           <List className="telephones">
