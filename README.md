@@ -28,33 +28,40 @@ Fiz estas escolhas de Tech Stack por ter recebido o aval para utilizar as tecnol
 
 ### Instruções de Instalação
 
+<hr>
+
 #### Github
 
 ##### Pré requisitos:
 ###### Git
 ###### NodeJs
 
-Abrir um novo terminal e digitar
-git clone git@github.com:vitmonjo/senior-crud.git
-cd senior-crud
-npm install
+Abrir um novo terminal e digitar <br />
+git clone git@github.com:vitmonjo/senior-crud.git <br />
+cd senior-crud <br />
+npm install <br />
 
+<hr>
 
 #### .RAR
 
 ##### Pré requisitos:
 ###### NodeJs
 
-Extrair o arquivo em alguma pasta
-Abrir um novo terminal dentro desta pasta
-npm install
+Extrair o arquivo em alguma pasta <br />
+Abrir um novo terminal dentro desta pasta <br />
+npm install <br />
+
+<hr>
 
 
-Após realizada uma das etapas acima, abra dois terminais no VSCode: 
-No primeiro terminal, execute o servidor Express (server): npm run api-dev 
-No segundo terminal, execute o servidor React (client): npm run dev
+### Uso
+Para entender como usar a aplicação, há um botão de ajuda dentro da própria aplicação que fornece instruções detalhadas. <br />
 
-Acesse a aplicação no http://localhost:3000
+Após realizada uma das etapas acima (Github ou .RAR), abra dois terminais no VSCode: <br />
+No primeiro terminal, execute o servidor Express (server): npm run api-dev <br />
+No segundo terminal, execute o servidor React (client): npm run dev <br /> <br />
+Acesse a aplicação no http://localhost:3000 <br />
 
 ### Problemas enfrentados
 
