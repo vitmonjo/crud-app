@@ -125,3 +125,15 @@ No momento há 10 testes sendo rodados, cobrindo todos os endpoints da API. <br 
 #### Filtro por Telefone - Contatos
 
 ![image](https://github.com/vitmonjo/senior-crud/assets/95149403/1840fd94-b73b-4d12-9972-638979eb4936)
+
+Vale ressaltar que também é possível classificar por "Nome" e "Criado em", além de poder alterar a largura das colunas do DataGrid.
+
+### Ferramentas a serem implementadas
+
+Para melhorar ainda mais a experiência de quem faz o uso deste Sistema de Gerenciamento de Clientes, faz-se útil a implementação de um login de acesso, permitindo que cada usuário só veja a sua própria coleção de clientes e contatos. Também pretendo implementar novas validações nas entidades, como por exemplo campo CNPJ/CPF nos Clientes, assim como um campo de CPF nos Contatos, para impedir duplicatas de Contatos. No momento também é possível excluir um Cliente que ainda possua Contatos vinculados, seria útil uma validaçao no back-end para impedir a exclusão nesses casos.
+Embora goste bastante de utilizar a Material UI, percebi que eles pecam bastante na falta de Componentes de Input com validações de máscara ou tipo. O campo de telefone foi feito com o package @react-input/mask que permitiu aplicar a máscara no campo, permitindo somente números e já aplicando o formato de telefone brasileiro. Mais uma vez, o ideal seria que eu validasse os inputs tanto no front-end como no back-end.
+Apesar de ser possível utilizar o aplicativo em dispositivos móveis, esta não é a melhor experiência possível, um grande passo a frente no projeto seria então aumentar a responsividade, pois atualmente o usuário precisa mover muito a tela para chegar nos pontos principais.
+
+### Conclusão
+
+Estou verdadeiramente entusiasmado com a possibilidade de integrar a equipe de desenvolvimento da Senior e contribuir com minhas habilidades para a criação de soluções inovadoras e eficientes. A produção deste projeto demonstra meu compromisso com o desenvolvimento contínuo, capacitação constante e entrega de aplicações robustas e funcionais. Com minha experiência nas tecnologias utilizadas, aliada a uma forte vontade de aprender e crescer, estou confiante de que posso agregar valor significativo à equipe e aos projetos da empresa. Estou ansioso para a oportunidade de colaborar e evoluir junto à companhia, enfrentando desafios novos e mais complexos. Agradeço sinceramente pela oportunidade e estou à disposição para discutir todos os aspectos do projeto e explorar como posso contribuir para o sucesso da operação e da Senior como um todo.
