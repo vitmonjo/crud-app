@@ -77,3 +77,51 @@ npm test <br>
 No momento há 10 testes sendo rodados, cobrindo todos os endpoints da API. <br />
 
 ### Demonstração
+
+#### Testes
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/f7ea84ac-7f4a-484c-8339-ee9bd88e91d4)
+
+#### Página principal - Visualização de Clientes
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/85afbe19-904a-4886-a142-caf444d275a1)
+
+#### Tela de Ajuda - Clientes
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/5ef2112e-0f31-408a-bb45-c8bc710efee2)
+
+#### Tela de criação de Cliente
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/24c59212-55fa-4d2e-9dcd-1bd57e637974)
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/916f9caa-0616-4391-986c-f6c396bfb00e)
+
+#### Tela de criação de Contato
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/9015e216-156f-48cf-91c1-808a5acd440e)
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/94737f93-31c3-4e01-b7be-de0546cde991)
+
+#### Visualização de Contatos
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/9206a9eb-1d98-4171-b110-79173e969cfc)
+
+#### Tela de Ajuda - Contatos
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/9f850d94-bd73-4179-b013-6d30f5b2b9ca)
+
+#### Filtro por Nome - Clientes
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/db8e8739-56f6-41d8-b28b-0b3ce8051d85)
+
+#### Filtro por Telefone - Clientes
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/032ee55d-c08f-4628-9a9d-f5a104309e3d)
+
+#### Filtro por Nome - Contatos
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/cd1ec975-53fa-4762-aab1-815f35168c09)
+
+#### Filtro por Telefone - Contatos
+
+![image](https://github.com/vitmonjo/senior-crud/assets/95149403/1840fd94-b73b-4d12-9972-638979eb4936)
