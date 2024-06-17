@@ -1,6 +1,6 @@
-const Contact = require('../models/contact.model.js')
+import Contact from '../models/contact.model.js'
 
-const getContacts = async (req, res) => {
+export const getContacts = async (req, res) => {
     try {
         const contacts = await Contact.find({})
         res.status(200).json(contacts);
@@ -9,7 +9,7 @@ const getContacts = async (req, res) => {
     }
 }
 
-const getContact = async (req, res) => {
+export const getContact = async (req, res) => {
     try {
         const { id } = req.params;
         const contact = await Contact.findById(id);
@@ -19,7 +19,7 @@ const getContact = async (req, res) => {
     }
 }
 
-const getClientContacts = async (req, res) => {
+export const getClientContacts = async (req, res) => {
     try {
         const { clientId } = req.params;
         const contacts = await Contact.find({ clientId });
@@ -35,16 +35,16 @@ const getClientContacts = async (req, res) => {
 }
 
 
-const createContact = async (req, res) => {
+export const createContact = async (req, res) => {
     try {
         const contact = await Contact.create(req.body);
-        res.status(200).json(contact);
+        res.status(201).json(contact);
     } catch (error) {
         res.status(500).json({message: error.message})
     }
 }
 
-const updateContact = async (req, res) => {
+export const updateContact = async (req, res) => {
     try {
         const {id} = req.params;
         const contact = await Contact.findByIdAndUpdate(id, req.body);
@@ -60,7 +60,7 @@ const updateContact = async (req, res) => {
     }
 }
 
-const deleteContact = async (req, res) => {
+export const deleteContact = async (req, res) => {
     try {
         const {id} = req.params;
 
@@ -70,17 +70,8 @@ const deleteContact = async (req, res) => {
             return res.status(404).json({ message: 'Contact not found'})
         }
 
-        res.status(200).json({ message: 'Contact deleted succesfully'})
+        res.status(200).json({ message: 'Contact deleted successfully'})
     } catch (error) {
         res.status(500).json({message: error.message})
     }
-}
-
-module.exports = {
-    getContacts,
-    getContact,
-    getClientContacts,
-    createContact,
-    updateContact,
-    deleteContact
 }

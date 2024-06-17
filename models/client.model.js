@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const ClientSchema = mongoose.Schema(
     {
@@ -24,4 +24,4 @@ const ClientSchema = mongoose.Schema(
 
 const Client = mongoose.model('Client', ClientSchema);
 
-module.exports = Client;
+export default Client;

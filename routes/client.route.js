@@ -1,16 +1,16 @@
-const express = require('express');
-const Client = require('../models/client.model.js');
+import express from 'express';
+import Client from '../models/client.model.js';
 const router = express.Router();
-const {getClients, getClient, createClient, updateClient, deleteClient} = require('../controllers/client.controller.js');
+import * as api from '../controllers/client.controller.js';
 
 
-router.get('/', getClients)
-router.get('/:id', getClient)
+router.get('/', api.getClients)
+router.get('/:id', api.getClient)
 
-router.post('/', createClient)
+router.post('/', api.createClient)
 
-router.put('/:id', updateClient)
+router.put('/:id', api.updateClient)
 
-router.delete('/:id', deleteClient)
+router.delete('/:id', api.deleteClient)
 
-module.exports = router;
+export default router;

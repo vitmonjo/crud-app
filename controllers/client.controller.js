@@ -1,6 +1,6 @@
-const Client = require('../models/client.model.js')
+import Client from '../models/client.model.js'
 
-const getClients = async (req, res) => {
+export const getClients = async (req, res) => {
     try {
         const clients = await Client.find({})
         res.status(200).json(clients);
@@ -9,7 +9,7 @@ const getClients = async (req, res) => {
     }
 }
 
-const getClient = async (req, res) => {
+export const getClient = async (req, res) => {
     try {
         const { id } = req.params;
         const client = await Client.findById(id);
@@ -19,16 +19,16 @@ const getClient = async (req, res) => {
     }
 }
 
-const createClient = async (req, res) => {
+export const createClient = async (req, res) => {
     try {
         const client = await Client.create(req.body);
-        res.status(200).json(client);
+        res.status(201).json(client);
     } catch (error) {
         res.status(500).json({message: error.message})
     }
 }
 
-const updateClient = async (req, res) => {
+export const updateClient = async (req, res) => {
     try {
         const {id} = req.params;
         const client = await Client.findByIdAndUpdate(id, req.body);
@@ -44,7 +44,7 @@ const updateClient = async (req, res) => {
     }
 }
 
-const deleteClient = async (req, res) => {
+export const deleteClient = async (req, res) => {
     try {
         const {id} = req.params;
 
@@ -54,16 +54,8 @@ const deleteClient = async (req, res) => {
             return res.status(404).json({ message: 'Client not found'})
         }
 
-        res.status(200).json({ message: 'Client deleted succesfully'})
+        res.status(200).json({ message: 'Client deleted successfully'})
     } catch (error) {
         res.status(500).json({message: error.message})
     }
-}
-
-module.exports = {
-    getClients,
-    getClient,
-    createClient,
-    updateClient,
-    deleteClient
 }

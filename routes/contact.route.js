@@ -1,17 +1,17 @@
-const express = require('express');
-const Contact = require('../models/contact.model.js');
+import express from 'express';
+import Contact from '../models/contact.model.js';
 const router = express.Router();
-const {getContacts, getContact, getClientContacts, createContact, updateContact, deleteContact} = require('../controllers/contact.controller.js');
+import * as api from '../controllers/contact.controller.js';
 
 
-router.get('/', getContacts)
-router.get('/:id', getContact)
-router.get('/client/:clientId', getClientContacts);
+router.get('/', api.getContacts)
+router.get('/:id', api.getContact)
+router.get('/client/:clientId', api.getClientContacts);
 
-router.post('/', createContact)
+router.post('/', api.createContact)
 
-router.put('/:id', updateContact)
+router.put('/:id', api.updateContact)
 
-router.delete('/:id', deleteContact)
+router.delete('/:id', api.deleteContact)
 
-module.exports = router;
+export default router;
