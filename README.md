@@ -1,17 +1,19 @@
 # Desafio - Desenvolvedor Full Stack
 
-## Projeto de desenvolvimento de um CRUD básico, nele deve ser possível criar Clientes e posteriormente atribuir N Contatos para este Cliente.
+## Neste projeto, desenvolvi um sistema básico de CRUD onde é possível criar Clientes e posteriormente atribuir múltiplos Contatos para cada Cliente.
 
 ### Estrutura do sistema
 <hr>
 
-Uma tela de cadastro de Clientes com os seguintes campos:
+#### Cadastro de Clientes
+Campos:
 * Nome completo;
 * Email(s);
 * Telefone(s);
 * Data de Registro (populado automaticamente pelo Banco de Dados).
 
-Uma tela de cadastro de Contatos com os seguintes campos:
+#### Cadastro de Contatos
+Campos:
 * Nome completo;
 * Email(s);
 * Telefone(s).
@@ -21,12 +23,15 @@ Ambas as telas possuem as funcionalidades básicas de CRUD (Create, Read, Update
 ### Tecnologias utilizadas
 <hr>
 
-No back-end, a escolha foi Node.js com Express, para o Banco de Dados optei por usar MongoDB, acessado por meio de Mongoose.
-Para o front-end, foram utilizados React, por meio de Next.js e para a estilização, fiz uso intenso da biblioteca de componentes para React, a Material UI.
+#### Back-end
+* <em>Node.js</em> com <em>Express</em>
+* <em>MongoDB</em> acessado por meio de <em>Mongoose</em>
 
-A escolha para o front-end com React veio da grande familiaridade que já possuo com a biblioteca, pelo mesmo motivo optei pelo framework Express.js. Ambas as ferramentas são temas obrigatórios no decorrer do curso de Desenvolvimento Web que sigo, o The Odin Project. 
+#### Front-end
+* <em>React</em> com <em>Next.js</em>
+* <em>Material UI</em> para estilização
 
-Fiz estas escolhas de Tech Stack por ter recebido o aval para utilizar as tecnologias de minha preferência, no entanto, já desenvolvi um CRUD similar com Java e Spring Boot, persistindo dados com Hibernate num Banco de Dados PostgreSQL. Acabei optando por fazer em Node.js pela praticiade da linguagem e velocidade que iria me permitir entregar, mas meu objetivo no momento é aprofundar meus conhecimentos em Java/Spring Boot.
+A escolha do stack tecnológico foi baseada na minha familiaridade com essas ferramentas e na rapidez de desenvolvimento que elas proporcionam. Ambas são amplamente utilizadas no curso de Desenvolvimento Web que sigo, o The Odin Project. Para os testes, utilizei Mocha, Jest, SuperTest, Chai e Sinon, que são ferramentas populares e eficazes para garantir a integridade do código.
 
 ### Instruções de Instalação
 <hr>
@@ -64,9 +69,11 @@ No primeiro terminal, execute o servidor Express (server): npm run api-dev <br /
 No segundo terminal, execute o servidor React (client): npm run dev <br /> <br />
 Acesse a aplicação no http://localhost:3000 <br />
 
-### Problemas enfrentados
 
-Tentei utilizar o arquivo .env para tornar público algumas variáveis, principalmente o port em que o Node está rodando, todavia, percebi muita instabilidade por parte do Next.Js, em outros projetos utilizando Vite conseguia acessar essas variáveis de forma consistente no client-side.
-Ao menos pude utilizar no server-side para não ter que expor as credenciais de login do MongoDB.
+### Como realizar testes 
+Para realizar testes, com o aplicativo instalado, abra um terminar e execute o seguinte comando. <br />
+npm test <br>
 
-Acerca do Idioma, apesar de sempre fazer todos os meus projetos em inglês, neste acabei usando os labels em português, para criar uma interface acessível a qualquer usuário. No código, todavia, o padrão da língua inglesa foi seguido a risca.
+No momento há 10 testes sendo rodados, cobrindo todos os endpoints da API. <br />
+
+### Demonstração
