@@ -23,3 +23,13 @@
     overflow: auto; /* Ensures scrolling if content overflows */
     margin-top: 300px;
 }
+
+.telephone-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    height: 56px;
+    font-size: 0.9rem;
+}
