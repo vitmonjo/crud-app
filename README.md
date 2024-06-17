@@ -3,6 +3,7 @@
 ## Projeto de desenvolvimento de um CRUD básico, nele deve ser possível criar Clientes e posteriormente atribuir N Contatos para este Cliente.
 
 ### Estrutura do sistema
+<hr>
 
 Uma tela de cadastro de Clientes com os seguintes campos:
 * Nome completo;
@@ -18,6 +19,7 @@ Uma tela de cadastro de Contatos com os seguintes campos:
 Ambas as telas possuem as funcionalidades básicas de CRUD (Create, Read, Update e Delete)
 
 ### Tecnologias utilizadas
+<hr>
 
 No back-end, a escolha foi Node.js com Express, para o Banco de Dados optei por usar MongoDB, acessado por meio de Mongoose.
 Para o front-end, foram utilizados React, por meio de Next.js e para a estilização, fiz uso intenso da biblioteca de componentes para React, a Material UI.
@@ -27,7 +29,6 @@ A escolha para o front-end com React veio da grande familiaridade que já possuo
 Fiz estas escolhas de Tech Stack por ter recebido o aval para utilizar as tecnologias de minha preferência, no entanto, já desenvolvi um CRUD similar com Java e Spring Boot, persistindo dados com Hibernate num Banco de Dados PostgreSQL. Acabei optando por fazer em Node.js pela praticiade da linguagem e velocidade que iria me permitir entregar, mas meu objetivo no momento é aprofundar meus conhecimentos em Java/Spring Boot.
 
 ### Instruções de Instalação
-
 <hr>
 
 #### Github
@@ -35,7 +36,7 @@ Fiz estas escolhas de Tech Stack por ter recebido o aval para utilizar as tecnol
 ##### Pré requisitos:
 ###### Git
 ###### NodeJs
-
+<hr>
 Abrir um novo terminal e digitar <br />
 git clone git@github.com:vitmonjo/senior-crud.git <br />
 cd senior-crud <br />
@@ -47,7 +48,7 @@ npm install <br />
 
 ##### Pré requisitos:
 ###### NodeJs
-
+<hr>
 Extrair o arquivo em alguma pasta <br />
 Abrir um novo terminal dentro desta pasta <br />
 npm install <br />
