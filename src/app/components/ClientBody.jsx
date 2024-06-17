@@ -101,7 +101,7 @@ export default function Body() {
   const handleUpdateButtonClick = (row) => {
     console.log('Update button clicked for row:', row);
     setSelectedId(row.id); // Set selected ID for update
-    handleOpenClientModal('Update Client', row);
+    handleOpenClientModal('Modificar Cliente', row);
   };
 
   const handleContactsClick = (row) => {
