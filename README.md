@@ -80,7 +80,8 @@ No momento há 10 testes sendo rodados, cobrindo todos os endpoints da API. <br 
 
 #### Testes
 
-![image](https://github.com/vitmonjo/senior-crud/assets/95149403/f7ea84ac-7f4a-484c-8339-ee9bd88e91d4)
+![image](https://github.com/vitmonjo/crud-app/assets/95149403/a7b3a43b-8258-430d-bd09-d1f68b3f3b42)
+
 
 #### Página principal - Visualização de Clientes
 
