@@ -43,8 +43,8 @@ A escolha do stack tecnológico foi baseada na minha familiaridade com essas fer
 ###### NodeJs
 <hr>
 Abrir um novo terminal e digitar <br />
-git clone git@github.com:vitmonjo/senior-crud.git <br />
-cd senior-crud <br />
+git clone git@github.com:vitmonjo/crud-app.git <br />
+cd crud-app <br />
 npm install <br />
 
 <hr>
